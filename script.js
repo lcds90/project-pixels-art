@@ -29,14 +29,6 @@ function resetStyleBoard() {
   board.innerHTML = '';
 }
 
-function generatePixelRectangle(input) {
-  for (let index = 0; index < input * input; index += 1) {
-    const pixel = document.createElement('div');
-    pixel.classList.add('pixel');
-    board.appendChild(pixel);
-  }
-}
-
 function setStyleforBoard(input) {
   board.style.gridTemplateColumns = `repeat(${input}, 40px)`;
   board.style.gridTemplateRows = `repeat(${input}, 40px)`;
@@ -53,6 +45,23 @@ function checkValuesFromInput(input) {
   return number;
 }
 
+function changeColorWhenClicked(event) {
+  const findSelectedClass = document.querySelector('.selected');
+  const getColorFromClass = findSelectedClass.getAttribute('style').split(':')[1];
+  const color = getColorFromClass.substring(1, getColorFromClass.length - 1);
+  const div = event.target;
+  div.style.backgroundColor = color;
+}
+
+function generatePixelRectangle(input) {
+  for (let index = 0; index < input * input; index += 1) {
+    const pixel = document.createElement('div');
+    pixel.classList.add('pixel');
+    pixel.addEventListener('click', changeColorWhenClicked);
+    board.appendChild(pixel);
+  }
+}
+
 function generatePixels() {
   const input = checkValuesFromInput(document.querySelector('#board-size'));
   resetStyleBoard();
@@ -66,14 +75,6 @@ function setSelectedClass(event) {
     palleteColors[index].classList.remove('selected');
   }
   event.target.classList.add('selected');
-}
-
-function changeColorWhenClicked(event) {
-  const findSelectedClass = document.querySelector('.selected');
-  const getColorFromClass = findSelectedClass.getAttribute('style').split(':')[1];
-  const color = getColorFromClass.substring(1, getColorFromClass.length - 1);
-  const div = event.target;
-  div.style.backgroundColor = color;
 }
 
 function setSelectedColorFunctionInPixel() {
