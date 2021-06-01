@@ -36,10 +36,6 @@ function setStyleforBoard(input) {
 
 function checkValuesFromInput(input) {
   let number = input.value;
-  if (number === null || number === '') {
-    alert('Board inválido!');
-    return;
-  }
   if (number < 5) number = 5;
   if (number > 50) number = 50;
   return number;
@@ -62,11 +58,17 @@ function generatePixelRectangle(input) {
   }
 }
 
-function generatePixels() {
-  const input = checkValuesFromInput(document.querySelector('#board-size'));
-  resetStyleBoard();
-  generatePixelRectangle(input);
-  setStyleforBoard(input);
+function generatePixels(isFirstTime = true) {
+  if (isFirstTime !== true) {
+    const number = checkValuesFromInput(document.querySelector('#board-size'));
+    resetStyleBoard();
+    generatePixelRectangle(number);
+    setStyleforBoard(number);
+  } else {
+    resetStyleBoard();
+    generatePixelRectangle(5);
+    setStyleforBoard(5);
+  }
 }
 
 function setSelectedClass(event) {
@@ -91,12 +93,23 @@ function clearBoardAndFillPixelsWithWhite() {
   }
 }
 
+function checkInputAndThenGeneratePixels() {
+  const checkInput = document.querySelector('#board-size');
+
+  console.log(checkInput.value === '');
+  if (checkInput.value === '') {
+    alert('Board inválido!');
+  } else {
+    generatePixels(false);
+  }
+}
+
 window.onload = () => {
   generateColors();
   generatePixels();
 
   btnGenerateBoard.addEventListener('click', () => {
-    generatePixels();
+    checkInputAndThenGeneratePixels();
   });
 
   btnClearBoard.addEventListener('click', () => {
