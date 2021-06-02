@@ -96,7 +96,6 @@ function clearBoardAndFillPixelsWithWhite() {
 function checkInputAndThenGeneratePixels() {
   const checkInput = document.querySelector('#board-size');
 
-  console.log(checkInput.value === '');
   if (checkInput.value === '') {
     alert('Board inválido!');
   } else {
