@@ -1,6 +1,6 @@
 <div align=center>
 
-# 🟢 Trybe - Pixels Art 🟢
+# 🟢 Trybe - [Pixels Art](https://trybe-pixels-art.vercel.app/) 🟢
 
 Repositório possuí projeto desenvolvido no período que estive na <b>Trybe</b>, abordando sobre conceitos de estilização, manipulação do DOM com Javascript e reutilização de código.
 
