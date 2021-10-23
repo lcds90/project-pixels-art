@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +9,32 @@
     <link rel="stylesheet" href="style.css">
     <title>Projeto - Pixels Art</title>
 </head>
+
 <body>
     <main>
-        <section>
-            <h1 id="title">Paleta de Cores</h1>
+        <section class="container-palette">
             <article id="color-palette">
-                <div id="optionOne" class="color"></div>
-                <div id="optionTwo" class="color"></div>
-                <div id="optionThree" class="color"></div>
-                <div id="optionFour" class="color"></div>
+                <section class="wrapper">
+                    <h1 id="title">Paleta de Cores</h1>
+                <section class="colors">
+                    <div id="optionOne" class="color"></div>
+                    <div id="optionTwo" class="color"></div>
+                    <div id="optionThree" class="color"></div>
+                    <div id="optionFour" class="color"></div>
+                </section>
+                <section class="inputs">
+                    <input type="number" min="1" id="board-size">
+                    <button id="generate-board">VQV</button>
+                    <button id="clear-board">Limpar</button>
+                </section>
+                </section>
             </article>
-            <article id="input-board">
-                <input type="number" min="1" id="board-size">
-                <button id="generate-board">VQV</button>
-                <button id="clear-board">Limpar</button>
-            </article>
-            <article id="pixel-board">
-
-            </article>
+            <section class="section-board">
+                <article id="pixel-board"></article>
+            </section>
         </section>
     </main>
     <script src="script.js"></script>
 </body>
+
 </html>

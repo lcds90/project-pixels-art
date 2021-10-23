@@ -1,36 +1,127 @@
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html , body {
   width: 100%;
   height: 100%;
+  background-color: rgb(230, 230, 230);
 }
 
 main {
-  display: grid;
   padding: 15px;
+  height: 100%;
+}
+
+.container-palette {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: 1fr;
+  background: rgb(190, 190, 190);
+  border: inset 5px rgba(110, 110, 110, 0.445);
+  justify-items: center;
+  align-items: center;
+  overflow: auto;
 }
 
 #color-palette {
+  height: 100%;
+}
+
+.wrapper {
   display: grid;
-  grid: 1fr / repeat(4, 1fr);
-  justify-items: center;
-  width: 500px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25% 1fr 10%;
+  align-items: center;
+  place-items: center;
+  height: 80vh;
+  position: fixed;
+  top: 8vh;
+  left: 30px;
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.title-section img {
+  width: 100%;
+  height: auto;
+}
+
+#title {
+  font-size: 2rem;
+  font-weight: 300;
+  padding: 25px;
+  background-color: white;
+  border-radius: 25px;
+  position: relative;
+}
+
+#title:after {
+  content: '';
+  width: 50px;
+  height: 50px;
+  background: url('https://image.flaticon.com/icons/png/512/420/420317.png');
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  left: -25px;
+  top: 20px;
 }
 
 .color {
   border: 1px solid black;
   width: 50px;
   height: 50px;
+  border-radius: 25px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
+  transition: box-shadow 2s ease, filter 0.5s ease-in-out;
+}
+
+.color:hover {
+  box-shadow: 0 15px 2.5px rgba(0, 0, 0, 0.75);
+  filter: brightness(1.1);
+}
+
+.inputs {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inputs button {
+  border: 0;
+  padding: 10px;
+  color: whitesmoke;
+  font-style: italic;
+  font-weight: 300;
+  background-color: rgb(75, 75, 75);
+  cursor: pointer;
+}
+
+.inputs input {
+  border: 0;
+  padding: 10px;
+}
+
+.section-board {
+  position: relative;
+  height: 100%;
+  padding: 15px;
 }
 
 #pixel-board {
-  width: 100%;
-  height: 75%;
   display: grid;
-  justify-content: center;
-  align-items: center;
+  transition: all 2s ease;
+  margin: 5px;
 }
 
 .pixel {
@@ -38,4 +129,17 @@ main {
   border: 1px solid black;
   width: 40px;
   height: 40px;
+  transition: background-color 0.5s ease;
+  animation: fadeInOpacity 0.25s ease-in;
+}
+
+@keyframes fadeInOpacity {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
